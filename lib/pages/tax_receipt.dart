@@ -291,9 +291,9 @@ class ProductList extends StatelessWidget {
               color: Colors.white,
               elevation: 2.0,
               child: ListTile(
-                leading: const CircleAvatar(
-                  backgroundColor: Colors.blue,
-                  child: Icon(Icons.keyboard_arrow_right),
+                leading: CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: const Icon(Icons.keyboard_arrow_right),
                 ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

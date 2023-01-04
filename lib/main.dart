@@ -21,6 +21,19 @@ class App extends StatelessWidget {
           secondary: const Color.fromRGBO(35, 22, 66, 1.0),
         ),
         primaryColor: const Color.fromRGBO(243, 111, 33, 1.0),
+        inputDecorationTheme:const InputDecorationTheme(
+          focusColor: Color.fromRGBO(35, 22, 66, 1.0),
+          prefixIconColor: Color.fromRGBO(35, 22, 66, 1.0),
+          floatingLabelStyle: TextStyle(color: Color.fromRGBO(35, 22, 66, 1.0)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: Color.fromRGBO(35, 22, 66, 1.0)
+            ),
+          )
+        ),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color.fromRGBO(35, 22, 66, 1.0)
+        )
         // fontFamily: 'Georgia',
       ),
       navigatorKey: _mainNavigatorKey,

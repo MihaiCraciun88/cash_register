@@ -78,9 +78,9 @@ class _ProductsPageState extends State<ProductsPage> {
           color: Colors.white,
           elevation: 2.0,
           child: ListTile(
-            leading: const CircleAvatar(
-              backgroundColor: Colors.blue,
-              child: Icon(Icons.keyboard_arrow_right),
+            leading: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              child: const Icon(Icons.keyboard_arrow_right),
             ),
             title: Text('${item.name}, ${item.code}'),
             subtitle: Text('Price: ${item.price}, Vat: ${item.vatName} ${item.vatPercentage}%, Includes vat: ${item.vatIncluded}'),
@@ -130,7 +130,7 @@ class _ProductsPageState extends State<ProductsPage> {
         onPressed: () {
           productModal(context, Product(name:''), () => loadProducts());
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         child: const Icon(Icons.add),
       ),
     );
