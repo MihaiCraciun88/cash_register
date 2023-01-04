@@ -8,11 +8,11 @@ Widget AppDrawer(BuildContext context, Function onTap) {
       // Important: Remove any padding from the ListView.
       padding: EdgeInsets.zero,
       children: <Widget>[
-        const DrawerHeader(
+        DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Theme.of(context).colorScheme.secondary,
           ),
-          child: Text('Drawer Header', style: TextStyle(color: Colors.white),),
+          child: const Text('Drawer Header', style: TextStyle(color: Colors.white),),
         ),
         ListTile(
           title: const Text('Home'),

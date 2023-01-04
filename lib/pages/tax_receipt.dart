@@ -194,7 +194,7 @@ class DetailBox extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: const BorderRadius.all(Radius.circular(6.0))
             ),
             child: Padding(
@@ -235,7 +235,7 @@ class DetailBox extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepOrangeAccent
+                    backgroundColor: Theme.of(context).colorScheme.primary
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),

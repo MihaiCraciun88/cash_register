@@ -132,6 +132,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       drawer: widget.showDrawer ? AppDrawer(context, onTap) : null,
       body: Navigator(

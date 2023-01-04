@@ -16,7 +16,11 @@ class App extends StatelessWidget {
       title: 'Cash Register',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // primarySwatch: Colors.orange,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color.fromRGBO(243, 111, 33, 1.0),
+          secondary: const Color.fromRGBO(35, 22, 66, 1.0),
+        ),
+        primaryColor: const Color.fromRGBO(243, 111, 33, 1.0),
         // fontFamily: 'Georgia',
       ),
       navigatorKey: _mainNavigatorKey,
