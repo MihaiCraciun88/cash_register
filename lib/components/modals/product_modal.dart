@@ -35,87 +35,111 @@ Future<void> productModal(BuildContext context, Product product, Function fn) {
                 key: formKey,
                 child: Column(
                   children: <Widget>[
-                    TextFormField(
-                      controller: nameController,
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter a Name';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: codeController,
-                      decoration: const InputDecoration(
-                        labelText: 'Code',
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Name',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a Name';
+                          }
+                          return null;
+                        },
                       ),
                     ),
-                    TextFormField(
-                      controller: descriptionController,
-                      decoration: const InputDecoration(
-                        labelText: 'Description',
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: codeController,
+                        decoration: const InputDecoration(
+                          labelText: 'Code',
+                        ),
                       ),
                     ),
-                    TextFormField(
-                      controller: priceController,
-                      decoration: const InputDecoration(
-                        labelText: 'Price',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty || value == '0.0') {
-                          return 'Please enter a Price';
-                        }
-                        try {
-                          double.parse(value);
-                        } catch (e) {
-                          return 'Price should be a number';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: measuringUnitController,
-                      decoration: const InputDecoration(
-                        labelText: 'Measuring Unit',
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: descriptionController,
+                        decoration: const InputDecoration(
+                          labelText: 'Description',
+                        ),
                       ),
                     ),
-                    TextFormField(
-                      controller: productTypeController,
-                      decoration: const InputDecoration(
-                        labelText: 'Product Type',
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: priceController,
+                        decoration: const InputDecoration(
+                          labelText: 'Price',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty || value == '0.0') {
+                            return 'Please enter a Price';
+                          }
+                          try {
+                            double.parse(value);
+                          } catch (e) {
+                            return 'Price should be a number';
+                          }
+                          return null;
+                        },
                       ),
                     ),
-                    DropdownButton<Vat>(
-                      value: vat,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      isExpanded: true,
-                      onChanged: (Vat? value) {
-                        setState(() {
-                          vat = value!;
-                        });
-                        product.vatName = vat.name;
-                        product.vatPercentage = vat.perventage;
-                      },
-                      items: Vat.list().map<DropdownMenuItem<Vat>>((Vat vat) {
-                        return DropdownMenuItem<Vat>(
-                          value: vat,
-                          child: Text('${vat.name} ${vat.perventage}'),
-                        );
-                      }).toList(),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: measuringUnitController,
+                        decoration: const InputDecoration(
+                          labelText: 'Measuring Unit',
+                        ),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Vat Included'),
-                      value: product.vatIncluded,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          product.vatIncluded = value!;
-                        });
-                      },
-                      contentPadding: EdgeInsets.zero,
-                      controlAffinity: ListTileControlAffinity.leading,
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: TextFormField(
+                        controller: productTypeController,
+                        decoration: const InputDecoration(
+                          labelText: 'Product Type',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: DropdownButton<Vat>(
+                        value: vat,
+                        icon: const Icon(Icons.arrow_drop_down),
+                        isExpanded: true,
+                        onChanged: (Vat? value) {
+                          setState(() {
+                            vat = value!;
+                          });
+                          product.vatName = vat.name;
+                          product.vatPercentage = vat.perventage;
+                        },
+                        items: Vat.list().map<DropdownMenuItem<Vat>>((Vat vat) {
+                          return DropdownMenuItem<Vat>(
+                            value: vat,
+                            child: Text('${vat.name} ${vat.perventage}'),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      child: CheckboxListTile(
+                        title: const Text('Vat Included'),
+                        value: product.vatIncluded,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            product.vatIncluded = value!;
+                          });
+                        },
+                        contentPadding: EdgeInsets.zero,
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
                     ),
                   ],
                 ),

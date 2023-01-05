@@ -29,6 +29,10 @@ class App extends StatelessWidget {
             borderSide: BorderSide(
                 color: Color.fromRGBO(35, 22, 66, 1.0)
             ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6.0)),
+            gapPadding: 2.0,
           )
         ),
         textSelectionTheme: const TextSelectionThemeData(
