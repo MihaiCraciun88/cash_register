@@ -108,23 +108,22 @@ Future<void> productModal(BuildContext context, Product product, Function fn) {
                     ),
                     Container(
                       margin: const EdgeInsets.only(bottom: 10.0),
-                      child: DropdownButton<Vat>(
+                      child: DropdownButtonFormField(
                         value: vat,
                         icon: const Icon(Icons.arrow_drop_down),
-                        isExpanded: true,
-                        onChanged: (Vat? value) {
-                          setState(() {
-                            vat = value!;
-                          });
-                          product.vatName = vat.name;
-                          product.vatPercentage = vat.perventage;
-                        },
                         items: Vat.list().map<DropdownMenuItem<Vat>>((Vat vat) {
-                          return DropdownMenuItem<Vat>(
-                            value: vat,
-                            child: Text('${vat.name} ${vat.perventage}'),
-                          );
-                        }).toList(),
+                            return DropdownMenuItem<Vat>(
+                              value: vat,
+                              child: Text('${vat.name} ${vat.perventage}'),
+                            );
+                          }).toList(),
+                          onChanged: (Vat? value) {
+                            setState(() {
+                              vat = value!;
+                            });
+                            product.vatName = vat.name;
+                            product.vatPercentage = vat.perventage;
+                          },
                       ),
                     ),
                     Container(
