@@ -25,10 +25,19 @@ class DatecsDriver {
             'errorCode': 0,
             'errorText': ''
         };
-        SerialPortConfig config = SerialPortConfig();
-        config.baudRate = baudRate;
-        port.config = config;
         if (port.openReadWrite()) {
+            SerialPortConfig config = SerialPortConfig();
+            config.baudRate = badRate;
+            config.bits = 8;
+            config.parity = SerialPortParity.none;
+            config.stopBits = 1;
+            config.xonXoff = 0;
+            config.rts = 0;
+            config.cts = 0;
+            config.dsr = 0;
+            config.dtr = 0;
+            port.config = config;
+          
             List<String> cmds = script.split('\n');
             for (String line in cmds) {
                 List<String> components = line.replaceAll('\r', '').split(',');
@@ -48,11 +57,13 @@ class DatecsDriver {
                     break;
                 }
             }
-        }
 
-        port.close();
+            port.close();
+            config.dispose();
+        }
         return response;
     }
+
     Future<List<int>> send(int command, { String text = '' }) async {
         text = text.replaceAll('[', '').replaceAll(']', '').replaceAll('\\t', '\t');
 
@@ -88,6 +99,7 @@ class DatecsDriver {
 
         return sendCommand(Uint8List.fromList(data));
     }
+
     Future<List<int>> sendCommand(Uint8List data) async {
         bool sendData = false;
         try {
@@ -101,6 +113,7 @@ class DatecsDriver {
 
         return getResponse(data);
     }
+
     Future<List<int>> getResponse(data) async {
         try {
             Uint8List value;
@@ -124,6 +137,7 @@ class DatecsDriver {
         }
         return responseBites;
     }
+
     String getResponseText() {
         String responseText = '';
         for (int i = 10; i < responseBites.length; i++) {
@@ -135,6 +149,7 @@ class DatecsDriver {
         }
         return responseText;
     }
+
     void parseResponse(Uint8List data) {
         for (int i = 0; i < data.length; i++) {
             if (data[i] == SYN) {
@@ -144,6 +159,7 @@ class DatecsDriver {
             responseBites.add(data[i]);
         }
     }
+
     List<int> pushCmd(List<int> data, int cmd) {
         var size = cmd.toRadixString(16).split('');
         for (int i = 0; i < 4 - size.length; i++) {
@@ -154,6 +170,7 @@ class DatecsDriver {
         }
         return data;
     }
+
     int getBBC(List<int> data) {
         int sum = 0;
         for (int i = 1; i < data.length; i++) {
